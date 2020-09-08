@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import {
   TextField,
   FormControlLabel,
@@ -12,6 +12,7 @@ import {
   Typography
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import { saveAs } from 'file-saver';
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -56,14 +57,23 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const jsonToString = (json) => JSON.stringify(json, null, 2);
+
 export default function PrintJson({ json, clear }) {
   const classes = useStyles();
+
+  const save = useCallback(() => {
+    const fileName = `event-${json.eventName || 'unknown'}-${json.subscriberName || 'unknown'}`;
+    var blob = new Blob([jsonToString(json)], {type: "application/json;charset=utf-8"});
+    saveAs(blob, fileName);
+  }, [json]);
+
   return (
     <>
       <Grid item xs={12}>
         <Typography variant="h6">Config output</Typography>
       </Grid>
-      <pre>{JSON.stringify(json, null, 2)}</pre>
+      <pre>{jsonToString(json)}</pre>
       <Grid container justify="flex-end">
         <Button
           variant="outlined"
@@ -72,6 +82,14 @@ export default function PrintJson({ json, clear }) {
           onClick={clear}
         >
           Clear
+        </Button>
+        <Button
+          variant="contained"
+          color="secondary"
+          className={classes.button}
+          onClick={save}
+        >
+          Save
         </Button>
       </Grid>
     </>

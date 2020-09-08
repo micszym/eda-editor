@@ -242,18 +242,22 @@ export default function EdaForm({setFormData}) {
         </Grid>
         <Grid item xs={12}>
           <TextField
-            inputRef={register}
+            inputRef={register({required: true})}
             name="eventName"
             label="Event name"
             fullWidth
+            error={errors.eventName}
+            helperText={errors.eventName && 'required'}
           />
         </Grid>
         <Grid item xs={12}>
           <TextField
-            inputRef={register}
+            inputRef={register({required: true})}
             name="subscriberName"
             label="Subscriber name"
             fullWidth
+            error={errors.subscriberName}
+            helperText={errors.subscriberName && 'required'}
           />
         </Grid>
         <Grid item xs={12}>

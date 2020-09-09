@@ -46,6 +46,14 @@ function App() {
   const classes = useStyles();
   const [formData, setFormData] = useState();
 
+  const buildScopes = (scopes) => {
+    if (!!!scopes) {
+      return undefined;
+    }
+
+    return scopes.split(" ");
+  }
+
   const buildEndpoints = (form) => {
     if (!!!form) {
       return [];
@@ -56,7 +64,8 @@ function App() {
       httpVerb: form.method,
       selector: "*",
       authentication: {
-        ...form.auth
+        ...form.auth,
+        scopes: buildScopes(form.auth.scopes)
       }
     }]);
   }

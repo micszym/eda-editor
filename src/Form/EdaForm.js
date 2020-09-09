@@ -20,7 +20,7 @@ const buildName = (prefix, name) => `${prefix}.${name}`;
 const authTypes = {
   None: 'None',
   Basic: 'Basic',
-  Oidc: 'Oidc'
+  Oidc: 'OIDC'
 };
 
 const httpVerbs = {
@@ -125,7 +125,7 @@ const OidcAuth = ({ register, classes, control, prefix }) => {
       <Grid item xs={12} sm={10}>
         <TextField
           inputRef={register}
-          name={getName("stsUri")}
+          name={getName("uri")}
           label="STS Uri"
           fullWidth
         />
@@ -141,7 +141,7 @@ const OidcAuth = ({ register, classes, control, prefix }) => {
       <Grid item xs={12} sm={6}>
         <TextField
           inputRef={register}
-          name={getName("clientSecret")}
+          name={getName("clientSecretKeyName")}
           label="Client Secret Key Vault Key"
           fullWidth
         />

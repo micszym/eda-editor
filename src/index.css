@@ -5,6 +5,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url(https://images.pexels.com/photos/10676/Warsaw-center-free-license-CC0.jpg?cs=srgb&dl=pexels-skitterphoto-10676.jpg&fm=jpg);
+  background-repeat: no-repeat;
+  background-position: 0% 40%;
+  background-size: 180%;
 }
 
 code {

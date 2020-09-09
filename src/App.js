@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import EdaForm from './Form/EdaForm';
-import { CssBaseline, Paper, AppBar, Toolbar, Typography } from '@material-ui/core';
+import { CssBaseline, Paper, AppBar, Toolbar, Typography, Box } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import PrintJson from './Form/PrintJson';
 
@@ -85,15 +85,28 @@ function App() {
       <CssBaseline />
       <AppBar position="absolute" color="secondary" className={classes.appBar}>
         <Toolbar>
-          <Typography variant="h6" color="inherit" noWrap>
-            eSW EDA Editor v 0.1
-          </Typography>
+          <Box display="flex" alignItems="baseline">
+            <img
+              src="https://www.eshopworld.com/wp-content/themes/esw2018/img/logo_eshopworld@2x.png"
+              height="20"
+            />
+            <Typography
+              variant="h6"
+              color="inherit"
+              noWrap
+              style={{ marginLeft: 10 }}
+            >
+              Subscriber self-service v0.1
+            </Typography>
+          </Box>
         </Toolbar>
       </AppBar>
       <main className={classes.layout}>
         <Paper className={classes.paper}>
           {!!!formData && <EdaForm setFormData={buildJson} />}
-          {!!formData && <PrintJson json={formData} clear={() => setFormData('')}/>}
+          {!!formData && (
+            <PrintJson json={formData} clear={() => setFormData("")} />
+          )}
         </Paper>
       </main>
     </>

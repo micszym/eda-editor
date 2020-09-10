@@ -63,7 +63,7 @@ export default function PrintJson({ json, clear }) {
   const classes = useStyles();
 
   const save = useCallback(() => {
-    const fileName = `event-${json.eventName || 'unknown'}-${json.subscriberName || 'unknown'}`;
+    const fileName = `event-${json.eventName || 'unknown'}-${json.subscriberName || 'unknown'}.json`;
     var blob = new Blob([jsonToString(json)], {type: "application/json;charset=utf-8"});
     saveAs(blob, fileName);
   }, [json]);
